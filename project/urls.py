@@ -4,9 +4,9 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('project',
     # Examples:
-    # url(r'^$', 'project.views.home', name='home'),
+    url(r'^$', 'project.blog.views.home', name='home'),
     # url(r'^project/', include('project.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
