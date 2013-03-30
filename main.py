@@ -16,7 +16,7 @@
 #
 import os
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 import django.core.handlers.wsgi
 
