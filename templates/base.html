@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block htmlhead %}
+    <meta charset=utf-8>
+    <title>{% block title %}Home{% endblock %} | Meitham</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Meitham Jamaa">
+
+
+    <link href="/static/css/normalize.css" rel="stylesheet" media="screen">
+    <!-- bootstrap -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+            /* Custom container */
+        .container-narrow {
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+        .container-narrow > hr {
+            margin: 30px 0;
+        }
+
+            /* Main marketing message and sign up button */
+        .jumbotron {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .jumbotron h1 {
+            font-size: 72px;
+            line-height: 1;
+        }
+
+        .jumbotron .btn {
+            font-size: 21px;
+            padding: 14px 24px;
+        }
+
+            /* Supporting marketing content */
+        .marketing {
+            margin: 60px 0;
+        }
+
+        .marketing p + h4 {
+            margin-top: 28px;
+        }
+
+        div.footer {
+            color: #888888;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            display: inline-block;
+        }
+
+        @font-face {
+            font-family: 'FontAwesome';
+            src: url('/static/font/fontawesome-webfont.eot');
+            src: url('/static/font/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), url('/static/font/fontawesome-webfont.woff') format('woff'), url('/static/font/fontawesome-webfont.ttf') format('truetype'), url('/static/font/fontawesome-webfont.svg#FontAwesome') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <!-- <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> -->
+
+
+    <link href="/feed.atom" rel="alternate" title="Meitham"
+          type="application/atom+xml">
+    {% for link in links %}
+    <link rel="{{ link.rel }}" href="{{ link.href }}"{% if link.media %} media="{{ link.media }}"{% endif %} type="{{ link.type }}">
+    {% endfor %}
+    {% endblock %}
+</head>
+<body>
+
+
+<div class="container-narrow">
+
+
+    <!-- Navbar
+    ================================================== -->
+
+    <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+            <li><a href="/"><i class="icon-home"></i>Home</a></li>
+            <li><a href="/archive/"><i class="icon-calendar"></i>archive</a>
+            </li>
+            <li><a href="/about/"><i class="icon-user"></i>about</a></li>
+        </ul>
+        <h3 class="muted">Meitham</h3>
+    </div>
+
+    <hr>
+
+    <div class="jumbotron">
+        <h1>Self Ramblings</h1>
+
+        <p class="lead">Stuff that matters to me</p>
+    </div>
+
+    <hr>
+
+    {% block body %}
+
+        {% for entry in entries %}
+            <div class=entry-overview>
+                <div class=date>{{ entry.pub_date }}</div>
+                <div class=detail>
+                    <h1><a href="
+                            {{ entry.link }}">{{ entry.title }}</a>
+                    </h1>
+                    {% if entry.summary %}
+                        <div class=summary>{{ entry.render_summary }}</div>
+                    {% endif %}
+                    <p><a href="{{ entry.link }}">read more ...</a></p>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% endblock %}
+</div>
+<hr>
+
+<!-- Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <p class="row pagination-centered">&copy; Copyright 2013 by Meitham
+            Jamaa.</p>
+
+        <p class="row pagination-centered">Content licensed under <a
+                href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+        </p>
+
+        <ul class="footer-links pagination-centered">
+            <li id="email"><a href=""><i
+                    class="icon-envelope icon-large"></i></a></li>
+            <li><a href="http://twitter.com/meitham"><i
+                    class="icon-twitter icon-large"></i></a></li>
+            <li><a href="http://github.com/meitham"><i
+                    class="icon-github icon-large"></i></a></li>
+            <li><a href="https://plus.google.com/110083876574024848963/posts"><i
+                    class="icon-google-plus icon-large"></i></a></li>
+            <li><a href="http://uk.linkedin.com/in/meitham"><i
+                    class="icon-linkedin icon-large"></i></a></li>
+            <li><a href="/feed.atom" rel="alternate"
+                   title="Your atom feed title"><i
+                    class="icon-rss icon-large"></i></a></li>
+        </ul>
+    </div>
+</footer>
+
+</div> <!-- /container -->
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/js/raphael-min.js"></script>
+<script language="JavaScript">
+    $(document).ready(function () {
+                u = "me";
+                d = "meitham.com";
+                $("li#email a").attr("href", ["mailto:", u, "@", d].join(''));
+                $('li > [href="' + window.location.pathname + '"]').parent().addClass('active')
+            }
+    )
+</script>
+</body>
+</html>
+

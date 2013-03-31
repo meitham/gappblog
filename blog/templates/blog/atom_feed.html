@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xml:lang="en"
+      xml:base="http://www.example.org">
+    <id>urn:uuid:4FC292A4-C69C-4126-A9E5-4C65B6566E05</id>
+    <title>Meitham Jamaa Blog</title>
+    <subtitle>Stuff that matters to me</subtitle>
+    <updated>{{ updated }}</updated>
+    <author>
+        <name>Meitham Jamaa</name>
+        <email>spam_me@example.com</email>
+    </author>
+    <link href="http://meitham.com/" />
+    <link rel="self" href="http://meitham.com/feed" />
+    {% for entry in entries %}
+        {{ entry.atom|safe }}
+    {% endfor %}
+</feed>
+

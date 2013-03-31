@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Blog Archive{% endblock %}
+{% block body %}
+
+{% for entry in entries %}
+    <div class=entry-overview>
+        <div class=detail>
+            <p><a href="{{ entry.link }}">{{ entry.title }}</a> published on {{ entry.pub_date }}</p>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
